@@ -21,7 +21,7 @@ For the calculations, I found the mean, median, mode, range, variance, standard 
    ```c = conn.cursor()```
    
 3. Create the table with the name of the column and what data type is to be associated with each column
-   ``` c.execute('''
+```c.execute('''
   CREATE TABLE IF NOT EXISTS chs
                 (
                     [chargedescription], text
@@ -35,7 +35,7 @@ For the calculations, I found the mean, median, mode, range, variance, standard 
 conn.commit() ```
 
 4. Insert the columns into the table. Create values that should go inside the table and ensure they go with the corresponding column, as well as abide by the data type. 
-  ```c.execute('''
+```c.execute('''
     INSERT INTO chs
     VALUES
         ('COVID-Vaccine', 927, 100.00, 100.00, 'Vaccine'),
@@ -43,10 +43,10 @@ conn.commit() ```
 ''') ```
 
 5. Commit the changes
-  ``` conn.commit()```
+``` conn.commit()```
 
 6. Ensure that the name of the table is what was initially created.
-  ``` c.execute('''
+``` c.execute('''
     SELECT name
     FROM sqlite_master
     WHERE type= 'table'
@@ -58,20 +58,20 @@ for value in data:
     print(value)```
 
 7. Ensure that the values added are included in the table.
-  ```c.execute('''
+```c.execute('''
   SELECT * FROM chs;
 ''')
 
 print(c.fetchall())```
 
 8. Connect the table created to a SQL database using an engine.
-  ```engine = create_engine('sqlite:///health.db')```
+```engine = create_engine('sqlite:///health.db')```
 
 9. Display the values created.
-  ```chs = pd.read_sql("select * from chs;", conn)
+```chs = pd.read_sql("select * from chs;", conn)
 chs```
 
 10. Close the connection.
-```conn = sqlite3.connect('health.db')
-chs.to_sql('chs', conn, if_exists='replace', index=False)
-conn.close()```
+```conn = sqlite3.connect('health.db')```
+```chs.to_sql('chs', conn, if_exists='replace', index=False)```
+```conn.close()```
